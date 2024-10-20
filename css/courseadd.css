@@ -1,0 +1,37 @@
+.add-product__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--color-bg2); /* Optional: Add a background color */
+    border-radius: 10px; /* Optional: Add rounded corners */
+  }
+  
+  .form.grid {
+    display: grid;
+    gap: 20px; /* Adds space between form elements */
+  }
+  
+  .form__input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .form__btn {
+    text-align: center;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    background-color: #007bff; /* Button background */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  

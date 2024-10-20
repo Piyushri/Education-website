@@ -1,0 +1,246 @@
+/* Main Video Section Styling */
+.video-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 5rem;
+    flex-wrap: wrap;
+}
+
+.video-section {
+    flex: 2;
+    max-width: 65%;
+    margin-right: 20px;
+}
+
+.video-placeholder {
+    position: relative;
+    width: 100%;
+    padding: 40px 40px 0 40px; /* Adjust padding as needed */
+    margin-left: 30px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+.video-controls {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.control-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Adjusted Teacher Info */
+.teacher-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.teacher-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.teacher-name {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Video Playlist Styling */
+.video-playlist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Add space between video items */
+    margin-top: 40px;
+    justify-content: space-around;
+}
+
+
+.video-playlist-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+    clear: both; /* Ensure videos start on a new line */
+}
+
+.video-item {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+    margin: 10px; /* Adds extra space between video items */
+}
+
+.video-item video {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-title {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Video Controls Overlay */
+.video-overlay {
+    position: absolute;
+    bottom: 0; /* Position controls at the bottom */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px; /* Padding to move controls slightly up from the bottom */
+}
+
+.control-button {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.control-button:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Adjusted Video Placeholder Styling */
+.video-placeholder {
+    position: relative;
+}
+
+.video-placeholder video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Playlist videos */
+.video-item {
+    cursor: pointer;
+}
+
+.video-item video {
+    width: 350px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .video-section {
+        max-width: 100%; /* Allow the video section to take the full width */
+        flex: 1 1 auto; /* Allow it to grow as needed */
+        margin: 0; /* Reset margin */
+        order: 1; /* Ensure it stays first */
+    }
+
+    .teacher-info {
+        max-width: 100%;
+        margin: 20px 0; /* Add some margin for spacing */
+        order: 2; /* Ensure teacher info comes after video */
+    }
+
+    .video-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align for better aesthetics */
+    }
+
+    /* Optional: If you want to adjust the size of the main video */
+    .video-placeholder {
+        padding: 20px; /* Reduce padding for mobile */
+        width: 100%; /* Ensure the placeholder takes full width */
+    }
+
+    .video-placeholder video {
+        border-radius: 10px; /* Maintain rounding */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Optional: Enhance shadow for emphasis */
+    }
+
+    .video-playlist {
+        justify-content: center; /* Center playlist videos on small screens */
+    }
+
+    .video-item {
+        flex: 1 1 90%; /* Allow each video item to grow and take 90% width */
+        max-width: 90%; /* Prevent exceeding 90% width */
+    }
+
+    .video-item video {
+        width: 100%; /* Ensure videos are responsive */
+    }
+}
+.video-placeholder video {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Fullscreen Styles */
+:fullscreen .video-placeholder video {
+    width: 100vw; /* Full width of viewport */
+    height: 100vh; /* Full height of viewport */
+    border-radius: 0; /* Remove rounding for fullscreen */
+    box-shadow: none; /* Remove shadow for a cleaner fullscreen look */
+}
+/* Default styles for the main video title */
+.main-video-title {
+    font-size: 2rem; /* Adjust this size as needed */
+    text-align: center; /* Center the title */
+    margin-bottom: 1rem; /* Space below the title */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-video-title {
+        font-size: 1.5rem; /* Smaller font size for small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-video-title {
+        font-size: 1.2rem; /* Even smaller for extra small screens */
+    }
+}
+

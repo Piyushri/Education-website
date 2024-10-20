@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Website</title>
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/detail.css">
+
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="container nav__container">
+            <a href="index.html"><h4>BRIGHTPATH</h4></a>
+            <ul class="nav__menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signin.html">Signin/Signup</a></li>
+                <li><a href="tsignin.html">Faculty Login</a></li>
+                <li><a href="courseadd.html">Course Add</a></li>
+            </ul>
+            <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
+            <button id="close-menu-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+
+    <!-- Video Course Section -->
+    <section id="course-1" class="course-details detail__container">
+        <div class="video-container">
+            <div class="video-section">
+                <h4 id="course-title" class="main-video-title"></h4>
+                <div class="video-placeholder">
+                    <video id="mainVideo" preload="metadata">
+                        <source id="video-source" src="images/video1.mp4" src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay">
+                        <button id="prev" class="control-button"><i class="fas fa-backward"></i></button>
+                        <button id="playPause" class="control-button"><i class="fas fa-play"></i></button>
+                        <button id="next" class="control-button"><i class="fas fa-forward"></i></button>
+                        <button id="rewind" class="control-button"><i class="fas fa-undo"></i></button>
+                        <button id="forward" class="control-button"><i class="fas fa-redo"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="teacher-info">
+                <img id="teacher-image" src="" alt="Teacher" class="teacher-img">
+                <h3 id="teacher-name" class="teacher-name"></h3>
+            </div>
+        </div>
+
+        <!-- Video Playlist -->
+        <div class="video-playlist-container">
+            <h4 class="video-playlist-title">Video Playlist</h4> <!-- Playlist Title -->
+            <div class="video-playlist">
+                <div class="video-item" data-video="images/video1.mp4">
+                    <video>
+                        <source src="images/video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="video-title">Video Title 1</h3>
+                </div>
+                <div class="video-item" data-video="images/video2.mp4">
+                    <video>
+                        <source src="images/video2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="video-title">Video Title 2</h3>
+                </div>
+                <div class="video-item" data-video="images/video3.mp4">
+                    <video>
+                        <source src="images/video3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="video-title">Video Title 3</h3>
+                </div>
+                <div class="video-item" data-video="images/video1.mp4">
+                    <video>
+                        <source src="images/video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="video-title">Video Title 4</h3>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        const mainVideo = document.getElementById('mainVideo');
+        const playPauseBtn = document.getElementById('playPause');
+        let isPlaying = false;
+
+        // Toggle play/pause
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                mainVideo.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                mainVideo.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Change main video when clicking a playlist video
+        const videoItems = document.querySelectorAll('.video-item');
+        videoItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const videoSrc = this.getAttribute('data-video');
+                mainVideo.src = videoSrc;
+                mainVideo.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                isPlaying = true;
+            });
+        });
+        const courseId = new URLSearchParams(window.location.search).get('course');
+        const courses = {
+            course1: {
+                title: "Responsive Social Media Website UI Design",
+                description: "Create a responsive social media website UI with sleek layouts, interactive elements, and seamless navigation.",
+                image: "./images/course1.jpg",
+                video: "images/video1.mp4",
+                teacher: "Shatta Wale",
+                teacherImage: "images/tm1.jpg"
+            },
+            course2: {
+                title: "Responsive SmartHome Website Design",
+                description: "Design a responsive SmartHome website offering seamless home automation control with intuitive, user-friendly navigation.",
+                image: "./images/course2.jpg",
+                video: "images/video2.mp4",
+                teacher: "Mia Jones",
+                teacherImage: "images/tm2.jpg"
+            },
+            course3: {
+                title: "Responsive Admin Dashboard UI Design",
+                description: "Create a responsive admin dashboard UI with data visualization, intuitive navigation, and real-time updates for seamless management.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "Dianna Ayi",
+                teacherImage: "images/tm3.jpg"
+            },
+            course4: {
+                title: "Responsive Social Media Website UI Design",
+                description: "Create a responsive social media website UI with sleek layouts, interactive elements, and seamless navigation.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "John Dumelo",
+                teacherImage: "images/tm4.jpg"
+            },
+            course5: {
+                title: "Responsive SmartHome Website Design",
+                description: "Design a responsive SmartHome website offering seamless home automation control with intuitive, user-friendly navigation.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "Ruth Shockings",
+                teacherImage: "images/tm5.jpg"
+            },
+            course6: {
+                title: "Responsive Admin Dashboard UI Design",
+                description: "Create a responsive admin dashboard UI with data visualization, intuitive navigation, and real-time updates for seamless management.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "Edem Quist",
+                teacherImage: "images/tm6.jpg"
+            },
+            course7: {
+                title: "Responsive Social Media Website UI Design",
+                description: "Create a responsive social media website UI with sleek layouts, interactive elements, and seamless navigation.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "Lila James",
+                teacherImage: "images/tm7.jpg"
+            },
+            course8: {
+                title: "Responsive SmartHome Website Design",
+                description: "Design a responsive SmartHome website offering seamless home automation control with intuitive, user-friendly navigation.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "Menz Gold",
+                teacherImage: "images/tm8.jpg"
+            },
+            course9: {
+                title: "Responsive Admin Dashboard UI Design",
+                description: "Create a responsive admin dashboard UI with data visualization, intuitive navigation, and real-time updates for seamless management.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "John James",
+                teacherImage: "images/tm9.jpg"
+            },
+            course10: {
+                title: "Responsive Social Media Website UI Design",
+                description: "Create a responsive media website UI with sleek layouts, interactive elements, and seamless navigation.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "Leela Dumelo",
+                teacherImage: "images/tm10.jpg"
+            },
+            course11: {
+                title: "Responsive SmartHome Website Design",
+                description: "Design a responsive SmartHome website offering seamless home automation control with intuitive, user-friendly navigation.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "John Dumelo",
+                teacherImage: "images/tm4.jpg"
+            },
+            course12: {
+                title: "Responsive Admin Dashboard UI Design",
+                description: "Create a responsive admin dashboard UI with data visualization, intuitive navigation, and real-time updates for seamless management.",
+                image: "./images/course3.jpg",
+                video: "images/video3.mp4",
+                teacher: "Mia Jones",
+                teacherImage: "images/tm2.jpg"
+            },
+        };
+
+        // Load course details based on the course ID
+        function loadCourseDetails() {
+            const course = courses[courseId];
+
+            if (course) {
+                document.getElementById('course-title').innerText = course.title;
+                document.getElementById('video-source').src = course.video;
+                document.getElementById('teacher-image').src = course.teacherImage;
+                document.getElementById('teacher-name').innerText = course.teacher;
+            } else {
+                document.getElementById('course-title').innerText = "Course not found.";
+            }
+        }
+
+        // Load course details on page load
+        window.onload = loadCourseDetails;
+    </script>
+
+    <!--====================FOOTER==================-->
+    <footer>
+        <div class="container footer__container">
+            <div class="footer__1">
+                <a href="index.html" class="footer__logo"><h4>BRIGHTPATH</h4></a>
+                <p>Grow your skills to advance your career path</p>
+            </div>
+            <div class="footer__2">
+                <h4>Permalinks</h4>
+                <ul class="permalinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__3">
+                <h4>Privacy</h4>
+                <ul class="privacy">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__4">
+                <h4>Contact Us</h4>
+                <p>+91 893675895</p>
+                <p>brightpath922@gmail.com</p>
+
+                <ul class="footer__socials">
+                    <li><a href="#"><i class="uil uil-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="uil uil-instagram-alt"></i></a></li>
+                    <li><a href="#"><i class="uil uil-twitter"></i></a></li>
+                    <li><a href="#"><i class="uil uil-linkedin-alt"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__copyright">
+            <small>Copyright &copy; Brightpath</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./main.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: { 
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                600: {
+                    slidesPerView: 2,
+                }
+            }
+        });
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        // Function to toggle fullscreen for the main video
+        function toggleFullscreen() {
+            const videoElement = document.querySelector('.video-placeholder video');
+
+            if (!document.fullscreenElement) {
+                // If not in fullscreen, request fullscreen
+                videoElement.requestFullscreen().catch(err => {
+                });
+            } else {
+                // If already in fullscreen, exit fullscreen
+                document.exitFullscreen();
+            }
+        }
+
+        // Add event listener to the video placeholder for fullscreen toggle
+        document.querySelector('.video-placeholder').addEventListener('click', toggleFullscreen);
+
+    </script>
+
+</body>
+</html>
